@@ -1,0 +1,16 @@
+<table id="t01" >
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>ShortName</th>
+    <th>SquadMarketValue</th>
+    <th>Img</th>
+  </tr>
+  <tr *ngFor="let track of teams.teams">
+    <td>{{track.code}}</td>
+    <td>{{track.name}}</td>
+    <td>{{track.shortName}}</td>
+    <td>{{track.squadMarketValue}}</td>
+    <td><img src="{{track.crestUrl}}" alt="" width="30" height="30"></td>
+  </tr>
+  </table>

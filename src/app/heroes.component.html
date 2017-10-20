@@ -1,0 +1,16 @@
+<table id="t01">
+  <tr>
+    <th>Id</th>
+    <th>Caption</th>
+    <th>League</th>
+    <th>Year</th>
+    <th>NumberOfTeams</th>
+  </tr>
+  <tr *ngFor="let track of competitions">
+    <td>{{track.id}}</td>
+    <td>{{track.caption}}</td>
+    <td>{{track.league}}</td>
+    <td>{{track.year}}</td>
+    <td>{{track.numberOfTeams}}</td>
+  </tr>
+  </table>

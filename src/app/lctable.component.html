@@ -1,0 +1,22 @@
+<table id="t01" *ngFor="let t of table | values">
+  <tr>
+    <th>group</th>
+    <th>rank</th>
+    <th>team</th>
+    <th>playedGames</th>
+    <th>crestUrl</th>
+    <th>points</th>
+    <th>goals</th>
+    <th>goalsAgainst</th>
+  </tr>
+  <tr *ngFor="let track of t">
+    <td>{{track.group}}</td>
+    <td>{{track.rank}}</td>
+    <td>{{track.team}}</td>
+    <td>{{track.playedGames}}</td>
+    <td><img src="{{track.crestURI}}" alt="" width="30" height="30"></td>
+    <td>{{track.points}}</td>
+    <td>{{track.goals}}</td>
+    <td>{{track.goalsAgainst}}</td>
+  </tr>
+  </table>
