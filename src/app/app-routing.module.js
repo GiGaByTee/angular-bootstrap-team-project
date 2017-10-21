@@ -12,12 +12,14 @@ var dashboard_component_1 = require("./dashboard.component");
 var competitions_component_1 = require("./competitions.component");
 var league_detail_component_1 = require("./league-detail.component");
 var lctable_component_1 = require("./lctable.component");
+var players_component_1 = require("./players.component");
 var routes = [
     { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
     { path: 'dashboard', component: dashboard_component_1.DashboardComponent },
     { path: 'detail/:id', component: league_detail_component_1.LeagueDetailComponent },
     { path: 'heroes', component: competitions_component_1.CompetitionsComponent },
-    { path: 'lctable', component: lctable_component_1.LCTableComponent }
+    { path: 'lctable', component: lctable_component_1.LCTableComponent },
+    { path: 'playerDetails/:id', component: players_component_1.PlayersComponent }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {

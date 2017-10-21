@@ -15,9 +15,12 @@ var dashboard_component_1 = require("./dashboard.component");
 var league_detail_component_1 = require("./league-detail.component");
 var competitions_component_1 = require("./competitions.component");
 var lctable_component_1 = require("./lctable.component");
+var players_component_1 = require("./players.component");
 var hero_service_1 = require("./hero.service");
 var myPipe_1 = require("./myPipe");
+var sortByPipe_1 = require("./sortByPipe");
 var app_routing_module_1 = require("./app-routing.module");
+var modal_module_1 = require("./modal/modal.module");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -29,7 +32,8 @@ AppModule = __decorate([
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
             http_1.HttpModule,
-            app_routing_module_1.AppRoutingModule
+            app_routing_module_1.AppRoutingModule,
+            modal_module_1.ModalModule
         ],
         declarations: [
             app_component_1.AppComponent,
@@ -37,7 +41,9 @@ AppModule = __decorate([
             league_detail_component_1.LeagueDetailComponent,
             competitions_component_1.CompetitionsComponent,
             lctable_component_1.LCTableComponent,
-            myPipe_1.ValuesPipe
+            myPipe_1.ValuesPipe,
+            sortByPipe_1.SortByPipe,
+            players_component_1.PlayersComponent,
         ],
         providers: [hero_service_1.HeroService],
         bootstrap: [app_component_1.AppComponent]

@@ -1,4 +1,7 @@
-
+h1{
+  padding-top: 80px;
+  align-self: center;
+}
 
 table {
   width:100%;
@@ -23,18 +26,9 @@ table#t01 th {
   color: white;
 }
 
-.red{
-  background-color: red !important;
+.row-table {
+  cursor: pointer;
 }
-
-.green {
-  background-color: lightgreen !important; 
-}
-
-.yellow {
-  background-color: yellow !important; 
-}
-
 
 .row-table:hover {
   background-color :darkkhaki !important;

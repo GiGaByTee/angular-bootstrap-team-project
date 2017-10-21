@@ -7,29 +7,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var ValuesPipe = (function () {
-    function ValuesPipe() {
+var common_1 = require("@angular/common");
+var modal_component_1 = require("./modal.component");
+var modal_service_1 = require("./modal.service");
+var ModalModule = (function () {
+    function ModalModule() {
     }
-    ValuesPipe.prototype.transform = function (value, args) {
-        // value.sort((t1:LCTable, t2:LCTable) =>{
-        //   if (t1.points > t2.points) {
-        //     return 1;
-        // }
-        if (args === void 0) { args = null; }
-        // if (t1.points < t2.points) {
-        //     return -1;
-        // }
-        // return 0;
-        // })
-        return Object.keys(value).map(function (key) { return value[key]; });
-    };
-    return ValuesPipe;
+    return ModalModule;
 }());
-ValuesPipe = __decorate([
-    core_1.Pipe({
-        name: 'values',
-        pure: false
+ModalModule = __decorate([
+    core_1.NgModule({
+        imports: [common_1.CommonModule],
+        declarations: [modal_component_1.ModalComponent],
+        providers: [modal_service_1.ModalService],
+        exports: [modal_component_1.ModalComponent]
     })
-], ValuesPipe);
-exports.ValuesPipe = ValuesPipe;
-//# sourceMappingURL=myPipe.js.map
+], ModalModule);
+exports.ModalModule = ModalModule;
+//# sourceMappingURL=modal.module.js.map

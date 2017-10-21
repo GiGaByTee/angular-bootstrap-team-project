@@ -81,6 +81,17 @@ footer {
 .item:not(:last-child) {
   padding: 5px 5px 5px;
 }
+
+.item:not(:last-child):hover {
+  background-color:skyblue;
+  color: bisque; 
+}
 .item:last-child {
-  padding: 5px;
+  padding: 5px 5px 5px;
+}
+
+.show-more:hover {
+  padding: 5px 5px 5px;
+  background-color:skyblue;
+  color: bisque; 
 }

@@ -34,4 +34,8 @@ export class CompetitionsComponent implements OnInit {
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
   }
+
+  goToDetail(competition: Competition): void {
+    this.router.navigate(['/detail', competition.id]);
+  }
 }

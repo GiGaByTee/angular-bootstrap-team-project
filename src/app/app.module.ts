@@ -8,18 +8,22 @@ import { DashboardComponent }   from './dashboard.component';
 import { LeagueDetailComponent }  from './league-detail.component';
 import { CompetitionsComponent }      from './competitions.component';
 import { LCTableComponent }      from './lctable.component';
+import { PlayersComponent }      from './players.component';
 import { HeroService }          from './hero.service';
 
 import { ValuesPipe }          from './myPipe';
-
+import {SortByPipe} from './sortByPipe'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule }     from './app-routing.module';
+import { ModalModule } from './modal/modal.module';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
 	  HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ModalModule
   ],
   declarations: [
     AppComponent,
@@ -27,9 +31,11 @@ import { AppRoutingModule }     from './app-routing.module';
     LeagueDetailComponent,
     CompetitionsComponent,
     LCTableComponent,
-    ValuesPipe
+    ValuesPipe,
+    SortByPipe,
+    PlayersComponent,
   ],
-  providers: [ HeroService ],
+  providers: [ HeroService  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

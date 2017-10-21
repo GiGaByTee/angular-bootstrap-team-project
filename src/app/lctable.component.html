@@ -9,7 +9,7 @@
     <th>goals</th>
     <th>goalsAgainst</th>
   </tr>
-  <tr *ngFor="let track of t">
+  <tr *ngFor="let track of t | sortBy: 'isDir': false">
     <td>{{track.group}}</td>
     <td>{{track.rank}}</td>
     <td>{{track.team}}</td>

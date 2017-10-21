@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var gg = require("./globals");
 var mock_heroes_1 = require("./mock-heroes");
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
@@ -40,19 +41,41 @@ var HeroService = (function () {
             .then(function (res) { return res.json(); });
     };
     HeroService.prototype.getTeam = function (id) {
-        // let compt: Competition[] = [];
-        return this.http.get("http://api.football-data.org/v1/competitions/" + id + "/teams", { headers: this.headers })
+        return this.http.get("http://api.football-data.org/v1/competitions/" + id + "/leagueTable", { headers: this.headers })
             .toPromise()
             .then(function (res) { return res.json(); });
     };
     HeroService.prototype.getLCTable = function () {
-        // let compt: Competition[] = [];
         return this.http.get("http://api.football-data.org/v1/competitions/464/leagueTable", { headers: this.headers })
             .toPromise()
             .then(function (res) {
             console.log(res.json().standings);
             return res.json().standings;
         });
+    };
+    HeroService.prototype.getTeamInfo = function (id) {
+        return this.http.get("http://api.football-data.org/v1/teams/" + id, { headers: this.headers })
+            .toPromise()
+            .then(function (res) { return res.json(); });
+    };
+    HeroService.prototype.getPlayers = function (id) {
+        var _this = this;
+        return this.http.get("http://api.football-data.org/v1/teams/" + id + "/players", { headers: this.headers })
+            .toPromise()
+            .then(function (res) {
+            var players = res.json();
+            for (var i = 0; i < players.players.length; i++) {
+                _this.setNationalityImg(players.players[i]);
+            }
+            return players;
+        });
+    };
+    HeroService.prototype.setNationalityImg = function (player) {
+        var p = gg.listOfTeam[player.nationality];
+        console.log(player.nationality);
+        player.nationalityUrl = p.toLowerCase();
+        console.log(player);
+        return player;
     };
     return HeroService;
 }());

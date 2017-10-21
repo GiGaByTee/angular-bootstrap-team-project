@@ -1,0 +1,22 @@
+<h1>{{teamInfo.name}}</h1>
+<img src="{{teamInfo.crestUrl}}"/>
+
+
+<table id="t01">
+  <tr>
+    <th>name</th>
+    <th>position</th>
+    <th>jerseyNumber</th>
+    <th>dateOfBirth</th>
+    <th>nationality</th>
+    <th>contractUntil</th>
+  </tr>
+  <tr *ngFor="let track of players.players" class="row-table" >
+    <td>{{track.name}}</td>
+    <td>{{track.position}}</td>
+    <td>{{track.jerseyNumber}}</td>
+    <td>{{track.dateOfBirth}}</td>
+    <td><img src="https://cdn.rawgit.com/hjnilsson/country-flags/master/svg/{{track.nationalityUrl}}.svg" height="30" width="30"/>{{track.nationality}}</td>
+    <td>{{track.contractUntil}}</td>
+  </tr>
+  </table>

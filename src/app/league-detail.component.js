@@ -14,11 +14,16 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var common_1 = require("@angular/common");
 var hero_service_1 = require("./hero.service");
+var modal_service_1 = require("./modal/modal.service");
 var LeagueDetailComponent = (function () {
-    function LeagueDetailComponent(heroService, route, location) {
+    function LeagueDetailComponent(heroService, route, location, router, modalService) {
         this.heroService = heroService;
         this.route = route;
         this.location = location;
+        this.router = router;
+        this.modalService = modalService;
+        this.modalId = 'hoplaModal';
+        this.showDialog = false;
     }
     LeagueDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -32,6 +37,9 @@ var LeagueDetailComponent = (function () {
     LeagueDetailComponent.prototype.goBack = function () {
         this.location.back();
     };
+    LeagueDetailComponent.prototype.getTeamDetails = function (teamId) {
+        this.router.navigate(['/playerDetails', teamId.split('/')[5]]);
+    };
     return LeagueDetailComponent;
 }());
 LeagueDetailComponent = __decorate([
@@ -42,7 +50,9 @@ LeagueDetailComponent = __decorate([
     }),
     __metadata("design:paramtypes", [hero_service_1.HeroService,
         router_1.ActivatedRoute,
-        common_1.Location])
+        common_1.Location,
+        router_1.Router,
+        modal_service_1.ModalService])
 ], LeagueDetailComponent);
 exports.LeagueDetailComponent = LeagueDetailComponent;
 //# sourceMappingURL=league-detail.component.js.map

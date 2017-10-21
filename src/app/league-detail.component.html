@@ -1,16 +1,36 @@
 <table id="t01" >
   <tr>
-    <th>Id</th>
-    <th>Name</th>
-    <th>ShortName</th>
-    <th>SquadMarketValue</th>
-    <th>Img</th>
+    <th>position</th>
+    <th>teamName</th>
+    <th>crestURI</th>
+    <th>playedGames</th>
+    <th>points</th>
+    <th>goals</th>
+    <th>goalsAgainst</th>
+    <th>goalDifference</th>
+    <th>wins</th>
+    <th>draws</th>
+    <th>losses</th>
   </tr>
-  <tr *ngFor="let track of teams.teams">
-    <td>{{track.code}}</td>
-    <td>{{track.name}}</td>
-    <td>{{track.shortName}}</td>
-    <td>{{track.squadMarketValue}}</td>
-    <td><img src="{{track.crestUrl}}" alt="" width="30" height="30"></td>
+  <tr *ngFor="let track of teams.standing" class="row-table">
+    <td>{{track.position}}</td>
+    <td (click)="getTeamDetails(track._links.team.href)" style="cursor:pointer" >{{track.teamName}}</td>
+    <td><img src="{{track.crestURI}}" alt="" width="30" height="30"></td>
+    <td>{{track.playedGames}}</td>
+    <td>{{track.points}}</td>
+    <td   style="cursor:pointer">{{track.goals}}</td>
+    <td>{{track.goalsAgainst}}</td>
+    <td *ngIf="track.goalDifference>0" class="green">
+        {{track.goalDifference}}
+    </td>
+    <td *ngIf="track.goalDifference<0" class="red">
+        {{track.goalDifference}}
+    </td>
+    <td *ngIf="track.goalDifference===0" class="yellow">
+        {{track.goalDifference}}
+    </td>
+    <td>{{track.wins}}</td>
+    <td>{{track.draws}}</td>
+    <td>{{track.losses}}</td>
   </tr>
   </table>

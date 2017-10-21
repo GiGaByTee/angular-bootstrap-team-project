@@ -6,7 +6,7 @@
     <th>Year</th>
     <th>NumberOfTeams</th>
   </tr>
-  <tr *ngFor="let track of competitions">
+  <tr *ngFor="let track of competitions" (click)="goToDetail(track)" class="row-table" >
     <td>{{track.id}}</td>
     <td>{{track.caption}}</td>
     <td>{{track.league}}</td>

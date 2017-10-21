@@ -12,39 +12,42 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var hero_service_1 = require("./hero.service");
-var CompetitionsComponent = (function () {
-    function CompetitionsComponent(router, heroService) {
+var PlayersComponent = (function () {
+    function PlayersComponent(router, route, heroService) {
         this.router = router;
+        this.route = route;
         this.heroService = heroService;
     }
-    CompetitionsComponent.prototype.getHeroes = function () {
+    PlayersComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.heroService.getHeroes().then(function (heroes) { return _this.heroes = heroes; });
-    };
-    CompetitionsComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.getHeroes();
-        this.heroService.getCompetitions().then(function (c) {
-            _this.competitions = c;
-            console.log("Compt=" + _this.competitions);
+        this.route.paramMap
+            .switchMap(function (params) { return _this.heroService.getTeamInfo(params.get('id')); })
+            .subscribe(function (t) {
+            _this.teamInfo = t;
+            console.log(_this.teamInfo);
+        });
+        this.route.paramMap
+            .switchMap(function (params) { return _this.heroService.getPlayers(params.get('id')); })
+            .subscribe(function (t) {
+            _this.players = t;
+            //   let p:any;
+            //  for ( p in this.players){
+            //       this.heroService.getPlayerImages(p)
+            //  }
+            console.log(_this.players);
         });
     };
-    CompetitionsComponent.prototype.onSelect = function (hero) {
-        this.selectedHero = hero;
-    };
-    CompetitionsComponent.prototype.goToDetail = function (competition) {
-        this.router.navigate(['/detail', competition.id]);
-    };
-    return CompetitionsComponent;
+    return PlayersComponent;
 }());
-CompetitionsComponent = __decorate([
+PlayersComponent = __decorate([
     core_1.Component({
-        selector: 'my-heroes',
-        templateUrl: './competitions.component.html',
-        styleUrls: ['./competitions.component.css']
+        selector: 'players',
+        templateUrl: './players.component.html',
+        styleUrls: ['./players.component.css']
     }),
     __metadata("design:paramtypes", [router_1.Router,
+        router_1.ActivatedRoute,
         hero_service_1.HeroService])
-], CompetitionsComponent);
-exports.CompetitionsComponent = CompetitionsComponent;
-//# sourceMappingURL=competitions.component.js.map
+], PlayersComponent);
+exports.PlayersComponent = PlayersComponent;
+//# sourceMappingURL=players.component.js.map

@@ -19,9 +19,10 @@ import { Router } from '@angular/router';
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
           <li class="active"><a routerLink="/dashboard" href="/dashboard">Home</a></li>
-          <li class="trigger"><a routerLink="/heroes" href="leagues.html">Leagues</a>
+          <li class="trigger"><a>Leagues</a>
           <div class="sub">
              <div class="item" style="cursor:pointer"  *ngFor="let c of com" (click)="goToDetail(c)">{{c.caption}}</div>
+             <div class="item show-more"  routerLink="/heroes" style="cursor:pointer" >Show all</div>   
           </div>
           </li>
           <li><a href="teams.html">Teams</a></li>

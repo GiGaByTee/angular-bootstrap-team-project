@@ -1,12 +1,20 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Team = (function () {
-    function Team(code, name, shortName, squadMarketValue, crestUrl) {
-        this.code = code;
-        this.name = name;
-        this.shortName = shortName;
-        this.squadMarketValue = squadMarketValue;
-        this.crestUrl = crestUrl;
+    function Team(position, teamName, crestURI, playedGames, points, goals, goalsAgainst, goalDifference, wins, draws, losses, home, away) {
+        this.position = position;
+        this.teamName = teamName;
+        this.crestURI = crestURI;
+        this.playedGames = playedGames;
+        this.points = points;
+        this.goals = goals;
+        this.goalsAgainst = goalsAgainst;
+        this.goalDifference = goalDifference;
+        this.wins = wins;
+        this.draws = draws;
+        this.losses = losses;
+        this.home = home;
+        this.away = away;
     }
     return Team;
 }());

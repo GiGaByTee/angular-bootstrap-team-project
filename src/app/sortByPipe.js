@@ -7,29 +7,30 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var ValuesPipe = (function () {
-    function ValuesPipe() {
+var SortByPipe = (function () {
+    function SortByPipe() {
     }
-    ValuesPipe.prototype.transform = function (value, args) {
-        // value.sort((t1:LCTable, t2:LCTable) =>{
-        //   if (t1.points > t2.points) {
-        //     return 1;
-        // }
-        if (args === void 0) { args = null; }
-        // if (t1.points < t2.points) {
-        //     return -1;
-        // }
-        // return 0;
-        // })
-        return Object.keys(value).map(function (key) { return value[key]; });
+    SortByPipe.prototype.transform = function (arr, prop, reverse) {
+        if (reverse === void 0) { reverse = false; }
+        if (arr === undefined)
+            return;
+        var m = reverse ? -1 : 1;
+        return arr.sort(function (a, b) {
+            if (a.points > b.points) {
+                return -1;
+            }
+            if (a.points < b.points) {
+                return 1;
+            }
+            return 0;
+        });
     };
-    return ValuesPipe;
+    return SortByPipe;
 }());
-ValuesPipe = __decorate([
+SortByPipe = __decorate([
     core_1.Pipe({
-        name: 'values',
-        pure: false
+        name: 'sortBy'
     })
-], ValuesPipe);
-exports.ValuesPipe = ValuesPipe;
-//# sourceMappingURL=myPipe.js.map
+], SortByPipe);
+exports.SortByPipe = SortByPipe;
+//# sourceMappingURL=sortByPipe.js.map
