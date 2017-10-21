@@ -14,13 +14,13 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var common_1 = require("@angular/common");
 var hero_service_1 = require("./hero.service");
-var HeroDetailComponent = (function () {
-    function HeroDetailComponent(heroService, route, location) {
+var LeagueDetailComponent = (function () {
+    function LeagueDetailComponent(heroService, route, location) {
         this.heroService = heroService;
         this.route = route;
         this.location = location;
     }
-    HeroDetailComponent.prototype.ngOnInit = function () {
+    LeagueDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.paramMap
             .switchMap(function (params) { return _this.heroService.getTeam(params.get('id')); })
@@ -29,20 +29,20 @@ var HeroDetailComponent = (function () {
             console.log(_this.teams);
         });
     };
-    HeroDetailComponent.prototype.goBack = function () {
+    LeagueDetailComponent.prototype.goBack = function () {
         this.location.back();
     };
-    return HeroDetailComponent;
+    return LeagueDetailComponent;
 }());
-HeroDetailComponent = __decorate([
+LeagueDetailComponent = __decorate([
     core_1.Component({
         selector: 'hero-detail',
-        templateUrl: './hero-detail.component.html',
-        styleUrls: ['./hero-detail.component.css']
+        templateUrl: './league-detail.component.html',
+        styleUrls: ['./league-detail.component.css']
     }),
     __metadata("design:paramtypes", [hero_service_1.HeroService,
         router_1.ActivatedRoute,
         common_1.Location])
-], HeroDetailComponent);
-exports.HeroDetailComponent = HeroDetailComponent;
-//# sourceMappingURL=hero-detail.component.js.map
+], LeagueDetailComponent);
+exports.LeagueDetailComponent = LeagueDetailComponent;
+//# sourceMappingURL=league-detail.component.js.map

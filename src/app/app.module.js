@@ -12,8 +12,8 @@ var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
 var app_component_1 = require("./app.component");
 var dashboard_component_1 = require("./dashboard.component");
-var hero_detail_component_1 = require("./hero-detail.component");
-var heroes_component_1 = require("./heroes.component");
+var league_detail_component_1 = require("./league-detail.component");
+var competitions_component_1 = require("./competitions.component");
 var lctable_component_1 = require("./lctable.component");
 var hero_service_1 = require("./hero.service");
 var myPipe_1 = require("./myPipe");
@@ -34,8 +34,8 @@ AppModule = __decorate([
         declarations: [
             app_component_1.AppComponent,
             dashboard_component_1.DashboardComponent,
-            hero_detail_component_1.HeroDetailComponent,
-            heroes_component_1.HeroesComponent,
+            league_detail_component_1.LeagueDetailComponent,
+            competitions_component_1.CompetitionsComponent,
             lctable_component_1.LCTableComponent,
             myPipe_1.ValuesPipe
         ],

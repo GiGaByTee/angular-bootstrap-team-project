@@ -12,16 +12,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var hero_service_1 = require("./hero.service");
-var HeroesComponent = (function () {
-    function HeroesComponent(router, heroService) {
+var CompetitionsComponent = (function () {
+    function CompetitionsComponent(router, heroService) {
         this.router = router;
         this.heroService = heroService;
     }
-    HeroesComponent.prototype.getHeroes = function () {
+    CompetitionsComponent.prototype.getHeroes = function () {
         var _this = this;
         this.heroService.getHeroes().then(function (heroes) { return _this.heroes = heroes; });
     };
-    HeroesComponent.prototype.ngOnInit = function () {
+    CompetitionsComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.getHeroes();
         this.heroService.getCompetitions().then(function (c) {
@@ -29,19 +29,19 @@ var HeroesComponent = (function () {
             console.log("Compt=" + _this.competitions);
         });
     };
-    HeroesComponent.prototype.onSelect = function (hero) {
+    CompetitionsComponent.prototype.onSelect = function (hero) {
         this.selectedHero = hero;
     };
-    return HeroesComponent;
+    return CompetitionsComponent;
 }());
-HeroesComponent = __decorate([
+CompetitionsComponent = __decorate([
     core_1.Component({
         selector: 'my-heroes',
-        templateUrl: './heroes.component.html',
-        styleUrls: ['./heroes.component.css']
+        templateUrl: './competitions.component.html',
+        styleUrls: ['./competitions.component.css']
     }),
     __metadata("design:paramtypes", [router_1.Router,
         hero_service_1.HeroService])
-], HeroesComponent);
-exports.HeroesComponent = HeroesComponent;
-//# sourceMappingURL=heroes.component.js.map
+], CompetitionsComponent);
+exports.CompetitionsComponent = CompetitionsComponent;
+//# sourceMappingURL=competitions.component.js.map

@@ -5,8 +5,8 @@ import { HttpModule }    from '@angular/http';
 
 import { AppComponent }         from './app.component';
 import { DashboardComponent }   from './dashboard.component';
-import { HeroDetailComponent }  from './hero-detail.component';
-import { HeroesComponent }      from './heroes.component';
+import { LeagueDetailComponent }  from './league-detail.component';
+import { CompetitionsComponent }      from './competitions.component';
 import { LCTableComponent }      from './lctable.component';
 import { HeroService }          from './hero.service';
 
@@ -24,8 +24,8 @@ import { AppRoutingModule }     from './app-routing.module';
   declarations: [
     AppComponent,
     DashboardComponent,
-    HeroDetailComponent,
-    HeroesComponent,
+    LeagueDetailComponent,
+    CompetitionsComponent,
     LCTableComponent,
     ValuesPipe
   ],

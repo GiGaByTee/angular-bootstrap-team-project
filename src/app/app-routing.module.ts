@@ -2,15 +2,15 @@ import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { DashboardComponent }   from './dashboard.component';
-import { HeroesComponent }      from './heroes.component';
-import { HeroDetailComponent }  from './hero-detail.component';
+import { CompetitionsComponent }      from './competitions.component';
+import { LeagueDetailComponent }  from './league-detail.component';
 import {LCTableComponent }  from './lctable.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard',  component: DashboardComponent },
-  { path: 'detail/:id', component: HeroDetailComponent },
-  { path: 'heroes',     component: HeroesComponent },
+  { path: 'detail/:id', component: LeagueDetailComponent },
+  { path: 'heroes',     component: CompetitionsComponent },
   { path: 'lctable',     component: LCTableComponent }
 ];
 

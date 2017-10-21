@@ -8,10 +8,10 @@ import { HeroService } from './hero.service';
 
 @Component({
   selector: 'my-heroes',
-  templateUrl: './heroes.component.html',
-  styleUrls: [ './heroes.component.css' ]
+  templateUrl: './competitions.component.html',
+  styleUrls: [ './competitions.component.css' ]
 })
-export class HeroesComponent implements OnInit {
+export class CompetitionsComponent implements OnInit {
   heroes: Hero[];
   competitions: Competition[];
   selectedHero: Hero;
