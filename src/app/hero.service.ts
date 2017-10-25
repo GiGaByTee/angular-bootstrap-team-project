@@ -11,9 +11,15 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {HttpModule, Http, Response,Headers, RequestOptions} from '@angular/http';
 import 'rxjs/Rx';
 
+import { Observable }     from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+
 @Injectable()
 export class HeroService {
    coms: Competition[]=[];
+
+   teamsInfo: Promise<Team[]>;
+   flag: boolean = true;
    private headers = new Headers({'X-Auth-Token': "96704b288d4843f785e4ed7db7f210fe"});
 constructor(private http: Http){
 }
@@ -81,6 +87,20 @@ constructor(private http: Http){
     player.nationalityUrl = p.toLowerCase();
     console.log(player);
     return player;
+  }
+
+
+  search(term: string): Observable<Team[]> {
+    console.log("here");
+    
+    if (this.flag){
+      console.log("only oneeee")
+      this.flag = false;
+      this.teamsInfo = this.getTeam("445");
+      //console.log(this.getTeam("445") )
+    }
+
+    return Observable.fromPromise(this.teamsInfo.then(teams => teams.standing.filter(team => team.teamName.toLowerCase().includes(term))));
   }
 
   // getPlayerImages(player: Player) : Promise<Player> {

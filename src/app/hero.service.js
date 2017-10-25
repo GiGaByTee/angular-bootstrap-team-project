@@ -14,10 +14,13 @@ var mock_heroes_1 = require("./mock-heroes");
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 require("rxjs/Rx");
+var Observable_1 = require("rxjs/Observable");
+require("rxjs/add/operator/map");
 var HeroService = (function () {
     function HeroService(http) {
         this.http = http;
         this.coms = [];
+        this.flag = true;
         this.headers = new http_1.Headers({ 'X-Auth-Token': "96704b288d4843f785e4ed7db7f210fe" });
     }
     HeroService.prototype.getHeroes = function () {
@@ -76,6 +79,16 @@ var HeroService = (function () {
         player.nationalityUrl = p.toLowerCase();
         console.log(player);
         return player;
+    };
+    HeroService.prototype.search = function (term) {
+        console.log("here");
+        if (this.flag) {
+            console.log("only oneeee");
+            this.flag = false;
+            this.teamsInfo = this.getTeam("445");
+            //console.log(this.getTeam("445") )
+        }
+        return Observable_1.Observable.fromPromise(this.teamsInfo.then(function (teams) { return teams.standing.filter(function (team) { return team.teamName.toLowerCase().includes(term); }); }));
     };
     return HeroService;
 }());

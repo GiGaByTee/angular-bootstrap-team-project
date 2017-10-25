@@ -1,7 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { HeroService } from './hero.service';
 import { Competition } from './competition';
+import { Team } from './team';
 import { Router } from '@angular/router';
+
+import { Observable }        from 'rxjs/Observable';
+import { Subject }           from 'rxjs/Subject';
+
+// Observable class extensions
+import 'rxjs/add/observable/of';
+
+// Observable operators
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
 
 @Component({
   selector: 'my-app',
@@ -28,8 +40,16 @@ import { Router } from '@angular/router';
           <li><a href="teams.html">Teams</a></li>
           <li><a routerLink="/lctable" href="players.html">LC</a></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <ul class="nav navbar-nav">
+          <form>
+          <input type="text" name="search" placeholder="Search.." #searchBox id="search-box" (keyup)="search(searchBox.value)" [(ngModel)]="searchValue">
+        </form>
+          <div *ngIf="isVisible">
+            <div *ngFor="let team of teamsInfo | async"
+                (click)="gotoTeam(team._links.team.href)" class="search-result" >
+              {{team.teamName}}
+            </div>
+          </div>
         </ul>
       </div>
     </div>
@@ -70,13 +90,43 @@ export class AppComponent  implements OnInit{
   constructor(private router: Router, private heroService: HeroService) { }
   title = 'Tour of Heroes';
   com : Competition[];
+  teamsInfo: Observable<Team[]>;
+  isVisible: boolean = false;
+  searchValue:string = null;
+  private searchTerms = new Subject<string>();
+
+  search(term: string): void {
+    this.searchTerms.next(term);
+    this.isVisible = true;
+  }
 
   ngOnInit(): void {
     this.heroService.getCompetitions()
       .then(c => this.com = c.filter(a => !(a.caption.indexOf("Two") !== -1 || a.caption.indexOf("2 ") !== -1)).slice(1,7));
-  }
+  
+
+      this.teamsInfo = this.searchTerms
+      .debounceTime(300)        // wait 300ms after each keystroke before considering the term
+      .distinctUntilChanged()   // ignore if next search term is same as previous
+      .switchMap(term => term   // switch to new observable each time the term changes
+        // return the http search observable
+        ? this.heroService.search(term)
+        // or the observable of empty heroes if there was no search term
+        : Observable.of<Team[]>([]))
+      .catch(error => {
+        // TODO: add real error handling
+        console.log(error);
+        return Observable.of<Team[]>([]);
+      });
+    }
 
   goToDetail(competition: Competition): void {
     this.router.navigate(['/detail', competition.id]);
+  }
+
+  gotoTeam(teamId: string){
+    this.isVisible =false;
+    this.searchValue = '';
+    this.router.navigate(['/playerDetails', teamId.split('/')[5]]);
   }
 }
